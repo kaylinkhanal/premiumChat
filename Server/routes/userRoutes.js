@@ -5,9 +5,15 @@ const {
   loginUser,
   getMe,
 } = require("../controllers/userController");
+const users = require("../models/userModel")
 
 router.post("/", registerUser);
-//router.post("/login", loginUser);
+router.post("/login", loginUser);
 //router.get('/me', protect, getMe)
+
+router.get("/users", async(req, res) => {
+  const data = await users.find({})
+  res.json({usersList: data})
+})
 
 module.exports = router;
