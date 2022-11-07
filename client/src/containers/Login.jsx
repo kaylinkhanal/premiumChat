@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Login.css";
-
+import {setName} from '../reducers/users'
+import {useDispatch, useSelector} from "react-redux";
 const Login = () => {
+  const dispatch = useDispatch()
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,6 +16,7 @@ const Login = () => {
         Password: password,
       }),
     };
+    dispatch(setName())
     fetch("http://localhost:3001/login", requestOptions);
   };
 
