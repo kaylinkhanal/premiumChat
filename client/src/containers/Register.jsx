@@ -8,12 +8,14 @@ function Register() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
-  const callingFunc = () => {
+  const callingFunc = (e) => {
+    e.preventDefault();
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        fullname: name,
+        name: name,
         email: email,
         password: password,
       }),
@@ -24,12 +26,11 @@ function Register() {
   return (
     <div className="login-box">
       <h2>Register</h2>
-      <form>
+      <form onSubmit={callingFunc}>
         <div className="user-box">
           <input
             type="text"
-            name=""
-            required=""
+            name="name"
             onKeyUp={(e) => setname(e.target.value)}
           />
           <label>Username</label>
@@ -37,8 +38,7 @@ function Register() {
         <div className="user-box">
           <input
             type="text"
-            name=""
-            required=""
+            name="email"
             onKeyUp={(e) => setemail(e.target.value)}
           />
           <label>Email</label>
@@ -46,8 +46,7 @@ function Register() {
         <div className="user-box">
           <input
             type="password"
-            name=""
-            required=""
+            name="password"
             onKeyUp={(e) => setpassword(e.target.value)}
           />
 
@@ -57,7 +56,7 @@ function Register() {
         <input type="password" name="" required=""/>
         <label>Confirm Password</label>
       </div> */}
-        <button onClick={callingFunc()}>Submit</button>
+        <button type="submit">Submit</button>
 
         {/* <Link to="/">Already have an Account?</Link> */}
       </form>
