@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
 ul{
   padding-left: 0
 }
@@ -5,7 +10,7 @@ ul{
 li{
   list-style: none;
   margin-right: 5px;
-  padding: 10px
+  padding: 6px 10px
 }
 
 .onlineicon{
@@ -28,9 +33,14 @@ li{
   display: flex;
     flex-flow: row;
     align-items: center;
-    border-radius: 8px;
-    margin-bottom: 2px;
+    border-radius: 5px;
+    margin: 0 0 2px;
     position: relative;
+    font-size: 14px;
+    cursor: pointer;
+}
+.users:hover{
+  background: rgba(0,0,0,.2);
 }
 
 .user-img{
@@ -121,7 +131,12 @@ input:focus-visible {
     align-items: center;
 }
 
-button.send-btn {
+.send-btn{
+  width: 20%;
+  text-align: center;
+}
+
+.send-btn button{
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -129,6 +144,7 @@ button.send-btn {
   background: #000;
   color: #fff;
   font-size: 17px;
+  cursor: pointer;
 }
 
 .message-box textarea{
