@@ -19,7 +19,6 @@ const Login = () => {
 
   return (
     <div ClassName="formInline">
-      <form className="loginForm" action="">
         <input
           type="text"
           placeholder="UserName"
@@ -31,7 +30,6 @@ const Login = () => {
           onKeyUp={(e) => setPassword(e.target.value)}
         />
         <button onClick={loginHandler}>Submit</button>
-      </form>
     </div>
   );
 };
