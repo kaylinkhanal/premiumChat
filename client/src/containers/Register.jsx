@@ -7,19 +7,32 @@ function Register() {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [file, setFile] = useState();
 
+
+
+  const handleFile=(e)=>{
+    setFile(e.target.files[0])
+
+  }
   const callingFunc = (e) => {
+    const formData = new FormData()
+    formData.append("avatar", file);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-      }),
+      // headers: { "Content-Type": "application/json" },
+      body: formData,
+      dataType:"jsonp"
+
     };
     fetch("http://localhost:3001/register", requestOptions);
   };
+  
+  
 
   return (
     <div className="login-box">
@@ -48,6 +61,15 @@ function Register() {
           />
           <label>Password</label>
         </div>
+        <div className="user-box">
+          <input
+            type="file"
+            name="file"
+            onChange={handleFile}
+          />
+          <label>Avatar</label>
+        </div>
+
         {/* <div class="user-box">
         <input type="password" name="" required=""/>
         <label>Confirm Password</label>
