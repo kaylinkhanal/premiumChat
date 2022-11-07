@@ -5,6 +5,7 @@ const {
   loginUser,
   getMe,
 } = require("../controllers/userController");
+const users = require("../models/userModel")
 
 //multer file image upload
 const multer = require("multer");
@@ -26,7 +27,10 @@ const upload = multer({ storage: storage }).single("avatar");
 
 
 router.post("/", upload,registerUser);
-//router.post("/login", loginUser);
-//router.get('/me', protect, getMe)
+
+router.get("/users", async(req, res) => {
+  const data = await users.find({})
+  res.json({usersList: data})
+})
 
 module.exports = router;
