@@ -6,13 +6,14 @@ const User = require("../models/userModel");
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,filename } = req.body;
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   const user = await User.create({
     name,
     email,
     password: hashedPassword,
+    filename:req.file.filename
   });
   if (user) {
     res.status(201).json({

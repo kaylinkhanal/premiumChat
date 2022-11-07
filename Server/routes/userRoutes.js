@@ -10,7 +10,7 @@ const {
 const multer = require("multer");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "../client/src/uploads");
+    cb(null, '../client/src/uploads');
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -19,13 +19,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single("avatar");
 
 
-
-
-
-
-
-
 router.post("/", upload,registerUser);
+
 //router.post("/login", loginUser);
 //router.get('/me', protect, getMe)
 
