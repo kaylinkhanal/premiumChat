@@ -16,7 +16,7 @@ const RegisterSlice = createSlice({
         changeRegisterEmail: (state, actions) => {
             state.registerEmail = actions.payload
         },
-        changeregisterPassword: (state, actions) => {
+        changeRegisterPassword: (state, actions) => {
             state.registerPassword = actions.payload
         },
     }
