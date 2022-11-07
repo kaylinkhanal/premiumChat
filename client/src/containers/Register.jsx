@@ -1,6 +1,6 @@
 import "./register.css";
-// import './Login'
-// import { Link} from "react-router-dom";
+import './Login'
+import { Link, useNavigate }from "react-router-dom";
 import { useState } from "react";
 
 function Register() {
@@ -8,7 +8,10 @@ function Register() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
+  const navigate = useNavigate();
   const callingFunc = (e) => {
+
+    
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -19,6 +22,7 @@ function Register() {
       }),
     };
     fetch("http://localhost:3001/register", requestOptions);
+    navigate('/login');
   };
 
   return (
@@ -52,8 +56,9 @@ function Register() {
         <input type="password" name="" required=""/>
         <label>Confirm Password</label>
       </div> */}
-        <button  onClick={()=>callingFunc()}>Submit</button>
-        {/* <Link to="/">Already have an Account?</Link> */}
+        <button  onClick={()=>callingFunc() } >Submit</button>
+        <br></br>
+        <Link to="/">Already have an Account?</Link>
     </div>
   );
 }
