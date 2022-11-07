@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane} from '@fortawesome/free-solid-svg-icons'
@@ -7,34 +7,24 @@ import { faPaperPlane} from '@fortawesome/free-solid-svg-icons'
 
 const Chat = ()=>{
     const [currentUser, setCurrentUser] = useState('');
+    const [availableUser, setAvailableUser] = useState([])
     const [message, setMessage] = useState('')
 
-    const initialArr = [
-        {
-            "name": "kaylin",
-            id: 32121321,
-            "online": false,
-            "image": "./image/user.jpg"
-        },
-        {
-            "name": "hari",
-            id: 32121321,
-            "online": true
-        },
-        {
-            "name": "shyam",
-            id: 123333,
-            "online": true
-        }
-    ]
+    console.log(availableUser)
 
-    const [availableUser, setAvailableUser] = useState(initialArr)
+    const fetchList = ()=> {
+        fetch('http://localhost:3001/register/users').then(res=>res.json())
+                .then(data=> setAvailableUser(data.usersList))
+    }
+    useEffect(()=>{
+        fetchList()
+    },[])
 
     // search function
     const searchName = (text)=>{
         const tempUsers = [...availableUser]
         const serachFilter = tempUsers.filter((item)=>{
-            if(item.name.includes(text)){
+            if(item.name.toLowerCase().includes(text)){
                 return item
             }
         })
@@ -51,9 +41,11 @@ const Chat = ()=>{
 
                     <div className='message-box'>
 						<textarea onKeyUp={(e)=> setMessage(e.target.value)}></textarea>
-						<button className='send-btn' onClick={()=> null}>
-                            <FontAwesomeIcon icon={faPaperPlane} />
-                        </button>
+                        <div className='send-btn' >
+                            <button onClick={()=> null}>
+                                <FontAwesomeIcon icon={faPaperPlane} />
+                            </button>
+                        </div>
                     </div>
                 </div>
 

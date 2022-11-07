@@ -7,15 +7,16 @@ const ChatTab = (props)=>{
         <>   
             <div className='chatTab'>
                 <div className="user">
-                    <h2 className='username'>{props.currentUser}</h2>
+                    <h2 className='username'>{currentUser}</h2>
                 </div>
 
                 <div className='message-box'>
-                    <textarea onKeyUp={(e)=> props.setMessage(e.target.value)}></textarea>
-
-                    <button className='send-btn' onClick={()=> null}>
-                        <FontAwesomeIcon icon={faPaperPlane} />
-                    </button>
+                    <textarea onKeyUp={(e)=> setMessage(e.target.value)}></textarea>
+                    <div className='send-btn' >
+                        <button onClick={()=> null}>
+                            <FontAwesomeIcon icon={faPaperPlane} />
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
