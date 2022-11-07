@@ -132,7 +132,6 @@ input:focus-visible {
 }
 
 .send-btn{
-  width: 20%;
   text-align: center;
 }
 
@@ -148,9 +147,10 @@ input:focus-visible {
 }
 
 .message-box textarea{
-  width: 80%;
+  width: 100%;
     border-color: #ccc;
     padding: 10px;
+    margin-right: 10px;
 }
 
 .message-box textarea:focus{
