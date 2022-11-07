@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+ul{
+  padding-left: 0
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+li{
+  list-style: none;
+  margin-right: 5px;
+  padding: 10px
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.onlineicon{
+  height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background: green;
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+    bottom: 10px;
+    border: 1px solid rgba(255,255,255,.2);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.user-list{
+  position: relative;
+}
+
+.users{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    flex-flow: row;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 2px;
+    position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.user-img{
+  height: 25px;
+  width: 25px;
+  line-height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 1px solid #eee;
+  overflow: hidden;
+  background: #bbb9b9;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-img img{
+  max-width: 100%;
+  width: 100%;
+}
+
+.chat-box{
+  display: flex;
+  flex-flow: row wrap;
+  height: 100vh;
+}
+
+.chat-box>div {
+  display: flex;
+  flex-flow: column;
+  background: #eee;
+  box-sizing: border-box;
+  
+}
+.chat-box>div:first-child {
+  width: 70%;
+}
+
+.chat-box>div:last-child {
+  width: 30%;
+  background: #262525;
+  color: #fff;
+  padding: 10px;
+  
+}
+
+.chatTab h2{
+  margin: 0;
+  display: inline-block;
+}
+
+.chatTab .user {
+  background: #cfcece;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+}
+
+input{
+  height: 40px;
+    background-color: rgba(255,255,255,.2);
+    padding: 10px;
+    border: 0;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 0;
+    color: #fff;
+}
+
+input:focus-visible {
+  outline: 0;
+}
+
+.chatTab{
+  position: relative;
+}
+
+.message-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+    background: #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button.send-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 0;
+  background: #000;
+  color: #fff;
+  font-size: 17px;
+}
+
+.message-box textarea{
+  width: 80%;
+    border-color: #ccc;
+    padding: 10px;
+}
+
+.message-box textarea:focus{
+  outline: 0;
 }
