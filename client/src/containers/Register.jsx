@@ -1,20 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { changeRegisterName, changeRegisterEmail, changeRegisterPassword } from '../ActionReducers/RegisterSlice';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changeRegisterName,
+  changeRegisterEmail,
+  changeRegisterPassword,
+} from "../ActionReducers/RegisterSlice";
 import "./register.css";
-import './Login'
-import { Link, useNavigate }from "react-router-dom";
+import "./Login";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   // const [name, setname] = useState("");
   // const [email, setemail] = useState("");
   // const [password, setpassword] = useState("");
   const dispatch = useDispatch();
-  const { registerName, registerEmail, registerPassword } = useSelector((state) => state.Register)
+  const { registerName, registerEmail, registerPassword } = useSelector(
+    (state) => state.Register
+  );
 
   const navigate = useNavigate();
   const callingFunc = (e) => {
-
-    
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,8 +28,8 @@ function Register() {
         password: registerPassword,
       }),
     };
-    fetch("http://localhost:3001/register", requestOptions);
-    navigate('/login');
+    fetch("http://localhost:3001/users/", requestOptions);
+    navigate("/login");
   };
 
   return (
@@ -59,9 +63,9 @@ function Register() {
         <input type="password" name="" required=""/>
         <label>Confirm Password</label>
       </div> */}
-        <button  onClick={()=>callingFunc() } >Submit</button>
-        <br></br>
-        <Link to="/">Already have an Account?</Link>
+      <button onClick={() => callingFunc()}>Submit</button>
+      <br></br>
+      <Link to="/">Already have an Account?</Link>
     </div>
   );
 }
