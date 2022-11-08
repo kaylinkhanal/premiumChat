@@ -13,7 +13,7 @@ const Chat = ()=>{
     console.log(availableUser)
 
     const fetchList = ()=> {
-        fetch('http://localhost:3001/register/users').then(res=>res.json())
+        fetch('http://localhost:3001/users/users').then(res=>res.json())
                 .then(data=> setAvailableUser(data.usersList))
     }
     useEffect(()=>{
