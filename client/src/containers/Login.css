@@ -1,0 +1,12 @@
+.formInline {
+    width: 60%;
+    height: 50%;
+    background-color: blue;
+    border: 2px solid black;
+
+}
+
+.loginForm {
+    display: inline-flex;
+    flex-direction: column;
+}
