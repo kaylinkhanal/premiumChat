@@ -13,10 +13,10 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     name,
     email,
-    password,
+    password: hashedPassword,
     token: generateToken(),
   });
-  if (user) {
+  if (user && (await bcrypt.compare(password, user.password))) {
     res.status(201).json({
       name: user.name,
       email: user.email,
@@ -36,7 +36,7 @@ const loginUser = asyncHandler(async (req, res) => {
   //Check for user email
   const user = await User.findOne({ email });
 
-  if (user) {
+  if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
       name: user.name,
       email: user.email,
