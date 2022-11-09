@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { changeLoginName, changeLoginToken } from '../ActionReducers/LoginSlice';
+
 function Login() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const finalFunc = (values) => {
     const requestOptions = {
       method: "POST",
@@ -12,10 +19,12 @@ function Login() {
       }),
     };
     fetch("http://localhost:3001/users/login", requestOptions)
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(result.name, result.token)
-    })
+      .then((res) => res.json())
+      .then((result) => {
+        dispatch(changeLoginName(result.name))
+        dispatch(changeLoginToken(result.token))
+        navigate('/chat')
+      })
   };
 
   function validateEmail(value) {
@@ -38,7 +47,7 @@ function Login() {
 
   return (
     <div className="App-Login">
-      <h1>Signup</h1>
+      <h1>Sign In</h1>
       <Formik
         initialValues={{
           password: "",
@@ -50,8 +59,8 @@ function Login() {
           finalFunc(values);
         }}
       >
-        {({ errors, touched, isValidating }) => (
-          <Form>
+        {({ errors, touched, handleSubmit, isValidating }) => (
+          <Form onSubmit={handleSubmit}>
             <label>Email: </label>
             <Field
               name="email"
@@ -71,12 +80,7 @@ function Login() {
             )}
 
             <br></br>
-            <button
-              type="submit"
-              onSubmit={() => {
-                <Link to="/home"></Link>;
-              }}
-            >
+            <button type="submit">
               Submit
             </button>
           </Form>

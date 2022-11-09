@@ -3,10 +3,12 @@
     height: 50%;
     background-color: blue;
     border: 2px solid black;
+    color: black;
 
 }
 
 .loginForm {
     display: inline-flex;
     flex-direction: column;
+    color: black;
 }
