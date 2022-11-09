@@ -11,7 +11,11 @@ function Login() {
         password: values.password,
       }),
     };
-    fetch("http://localhost:3001/users/login", requestOptions);
+    fetch("http://localhost:3001/users/login", requestOptions)
+    .then((res) => res.json())
+    .then((result) => {
+      console.log(result.name, result.token)
+    })
   };
 
   function validateEmail(value) {
