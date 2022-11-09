@@ -1,22 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  changeRegisterName,
-  changeRegisterEmail,
-  changeRegisterPassword,
-} from "../ActionReducers/RegisterSlice";
 import "./register.css";
 import "./Login";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-function Register() {
-  const dispatch = useDispatch();
-  const { registerName, registerEmail, registerPassword } = useSelector(
-    (state) => state.Register
-  );
 
+function Register() {
+  
   const navigate = useNavigate();
+
   const callingFunc = (values) => {
     const requestOptions = {
       method: "POST",
@@ -27,7 +19,8 @@ function Register() {
         password: values.password,
       }),
     };
-    fetch("http://localhost:3001/register", requestOptions);
+    fetch("http://localhost:3001/users/", requestOptions);
+    navigate("/login");
   };
 
   const SignupSchema = Yup.object().shape({
